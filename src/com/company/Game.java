@@ -9,8 +9,8 @@ public class Game {
     private String name;
     private String dueDate;
     private Scanner scanner = new Scanner(System.in);
-    LocalDate today = LocalDate.now();
-    LocalDate threeDaysLater = today.plus(3, ChronoUnit.DAYS);
+    private LocalDate today = LocalDate.now();
+    private LocalDate threeDaysLater = today.plus(3, ChronoUnit.DAYS);
 
     public Game(String name) {
         this.name = name;
@@ -22,15 +22,16 @@ public class Game {
     }
 
     public void setName(String name) {
-
-        scanner.nextLine();
+      this.name = name;
     }
 
     public String getDueDate() {
+        float p2 = ChronoUnit.DAYS.between(today, threeDaysLater);
+        System.out.println(p2);
         return dueDate;
     }
 
     public void setDueDate(String dueDate) {
-        float p2 = ChronoUnit.DAYS.between(today, threeDaysLater);
+      getDueDate();
     }
 }
