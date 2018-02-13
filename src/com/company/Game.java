@@ -5,12 +5,12 @@ import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
 public class Game {
+    Scanner scanner = new Scanner(System.in);
+
+    private Game game;
 
     private String name;
     private String dueDate;
-    private Scanner scanner = new Scanner(System.in);
-    private LocalDate today = LocalDate.now();
-    private LocalDate threeDaysLater = today.plus(3, ChronoUnit.DAYS);
 
     public Game(String name) {
         this.name = name;
@@ -22,12 +22,12 @@ public class Game {
     }
 
     public void setName(String name) {
-      this.name = name;
+        scanner.nextLine();
+
+        this.name = name;
     }
 
     public String getDueDate() {
-        float p2 = ChronoUnit.DAYS.between(today, threeDaysLater);
-        System.out.println(p2);
         return dueDate;
     }
 

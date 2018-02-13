@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class Menu {
     private Scanner input = new Scanner(System.in);
+    public Library library = new Library();
+    private Menu menu;
 
     public void Options() {
         System.out.println("Welcome to the video game library, ");
@@ -20,20 +22,12 @@ public class Menu {
         try {
             switch (input.nextInt()) {
                 case 1://1.) Add a game to your library
-                    input.nextLine();
-                    System.out.println("What is the name of the game you would like to add?");
-                    String name = input.nextLine();
-                    Game game = new Game(name);
-                    Library library = new Library();
+                    Game game = new Game(input.nextLine());
                     library.addGame(game);
-
-
-
                     break;
 
                 case 2://2.) Remove a game from your library
-                    Library removeGame = new Library();
-                    removeGame.removeGame();
+                    library.removeGame();
 
                     break;
                 case 3://3.) Check out a game from your library
@@ -41,6 +35,7 @@ public class Menu {
 
                     break;
                 case 4://4.) View your library
+
 
                     break;
                 case 5://5.) Check in a game
@@ -58,6 +53,8 @@ public class Menu {
 
                     break;
                 default:
+                    System.out.println("Please enter a number");
+                    Options();
                     break;
             }
 

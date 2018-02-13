@@ -1,67 +1,31 @@
 package com.company;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Library {
-    Scanner scanner = new Scanner(System.in);
-    Menu option = new Menu();
+    private Menu menu = new Menu();
+    List<Game> arrayList = new ArrayList<>();
 
+    public Game game;
 
-    Game game = new Game("");
-    private String[] array = {};
+    protected void addGame (Game game) {
+        Library library2 = new Library();
 
+        System.out.println("You have come here to add a game to your library. Please enter the games name now.");
 
-    protected void addGame(Game game) {
-        System.out.println(game.getName());
-    }
+        library2.arrayList.add(game);
 
-    protected void removeGame() {
-        System.out.println("What game would you like to remove?");
-        try {
-
-            switch (scanner.nextInt()) {
-                case 1:
-
-                    //game
-                    return;
-                case 2:
-                    //game
-                    return;
-                case 3:
-                    //game
-                    return;
-                case 4:
-                    //game
-                    return;
-                default:
-                    return;
-            }
-        } catch (InputMismatchException zxd) {
-            scanner.nextLine();
-            System.out.println("Please enter a number!");
-            removeGame();
-        }
-    }
-
-    protected void checkout() {
 
 
     }
+    protected void removeGame(int gameIndex) {
+        Library library3 = new Library();
 
-    protected void viewLibrary() {
-
-
-    }
-
-    protected void checkin() {
-
-
-    }
-
-
-    protected void viewCheckedOut() {
-
+        gameIndex -= gameIndex;
+        arrayList.remove(gameIndex);
+        System.out.println("Your game has been removed from your library!");
+        menu.Options();
 
     }
 
