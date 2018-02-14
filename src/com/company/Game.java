@@ -22,8 +22,6 @@ public class Game {
     }
 
     public void setName(String name) {
-        scanner.nextLine();
-
         this.name = name;
     }
 
@@ -32,7 +30,6 @@ public class Game {
     }
 
     public void setDueDate(String dueDate) {
-
       getDueDate();
     }
 }

@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Menu {
     private Scanner input = new Scanner(System.in);
-    public Library library = new Library();
+    public Library library = new Library(this);
     private Menu menu;
 
     public void Options() {
@@ -25,7 +25,6 @@ public class Menu {
                 case 1://1.) Add a game to your library
                     Game game = new Game(input.nextLine());
                     System.out.println("Please enter the name of the game you would like to add!");
-                    String name = game.getName();
                     library.addGame(game);
 
 

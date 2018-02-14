@@ -4,21 +4,26 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class Library {
+    public final Menu menu;
     ArrayList<Game> l = new ArrayList<>();
     ArrayList<String> games = new ArrayList<>();
     private Scanner input = new Scanner(System.in);
     private SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
 
+    public Library(Menu menu) {
+        this.menu = menu;
+    }
+
 
     protected void addGame(Game game) {
-        Library library2 = new Library();
-
+        Library library2 = new Library(menu);
+input.nextLine();
 //        System.out.println("You have come here to add a game to your library. Please enter the games name now.");
-        String inputUsed = input.nextLine();
-        l.add(game);
+        String name = input.nextLine();
+        Game video = new Game(name);
+        l.add(video);
         System.out.println("Your game has been saved!");
         Menu menu = new Menu();
         menu.Options();
@@ -84,17 +89,23 @@ public class Library {
 
         for (Game game : l) {
             System.out.println(l);
-                System.out.println(index++ + ". " + game.getName());
-            }
-            if (l.equals("Checked out")) ;
-            {
-                System.out.println("This game has been checked out");
-                Menu menu = new Menu();
-                menu.Options();
-            }
-
-
+            System.out.println(index++ + ". " + game.getName());
         }
+        if (l.equals("Checked out")) ;
+        {
+            System.out.println("This game has been checked out");
+            Menu menu = new Menu();
+            menu.Options();
+        }
+
+
     }
+
+    protected void checkedOut() {
+        System.out.println("Here is a list of the games you have checked out :D");
+
+
+    }
+}
 
 
