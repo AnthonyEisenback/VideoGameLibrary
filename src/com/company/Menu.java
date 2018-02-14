@@ -1,5 +1,6 @@
 package com.company;
 
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -23,7 +24,11 @@ public class Menu {
             switch (input.nextInt()) {
                 case 1://1.) Add a game to your library
                     Game game = new Game(input.nextLine());
+                    System.out.println("Please enter the name of the game you would like to add!");
+                    String name = game.getName();
                     library.addGame(game);
+
+
                     break;
 
                 case 2://2.) Remove a game from your library
@@ -31,15 +36,17 @@ public class Menu {
 
                     break;
                 case 3://3.) Check out a game from your library
+                    library.checkoutGame(input.nextInt());
 
 
                     break;
                 case 4://4.) View your library
+                    library.listGames(0);
 
 
                     break;
                 case 5://5.) Check in a game
-
+                    library.checkinGame();
 
                     break;
                 case 6://6.) view checked out games
