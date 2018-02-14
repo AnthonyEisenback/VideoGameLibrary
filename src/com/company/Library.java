@@ -17,15 +17,12 @@ public class Library {
     }
 
 
-    protected void addGame(Game game) {
-        Library library2 = new Library(menu);
-input.nextLine();
-//        System.out.println("You have come here to add a game to your library. Please enter the games name now.");
+    protected void addGame() {
+        System.out.println("You have come here to add a game to your library. Please enter the games name now.");
         String name = input.nextLine();
         Game video = new Game(name);
         l.add(video);
         System.out.println("Your game has been saved!");
-        Menu menu = new Menu();
         menu.Options();
 
     }
@@ -56,7 +53,6 @@ input.nextLine();
         game.setDueDate(dateFormat.format(calendar.getTime()));
 
         l.remove(gameIndex);
-        Menu menu = new Menu();
         menu.Options();
 
     }
@@ -76,7 +72,6 @@ input.nextLine();
             System.out.println("Please input a number");
             checkinGame();
         }
-        Menu menu = new Menu();
         menu.Options();
 
 
@@ -88,13 +83,12 @@ input.nextLine();
         System.out.println("This is your list of games :D");
 
         for (Game game : l) {
-            System.out.println(l);
             System.out.println(index++ + ". " + game.getName());
         }
         if (l.equals("Checked out")) ;
         {
             System.out.println("This game has been checked out");
-            Menu menu = new Menu();
+
             menu.Options();
         }
 

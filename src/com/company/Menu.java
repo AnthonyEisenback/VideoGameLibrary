@@ -23,9 +23,7 @@ public class Menu {
         try {
             switch (input.nextInt()) {
                 case 1://1.) Add a game to your library
-                    Game game = new Game(input.nextLine());
-                    System.out.println("Please enter the name of the game you would like to add!");
-                    library.addGame(game);
+                    library.addGame();
 
 
                     break;
