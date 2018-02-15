@@ -33,7 +33,7 @@ public class Menu {
 
                     break;
                 case 3://3.) Check out a game from your library
-                    library.checkoutGame(input.nextInt());
+                    library.checkoutGame(0);
 
 
                     break;
@@ -47,7 +47,7 @@ public class Menu {
 
                     break;
                 case 6://6.) view checked out games
-
+                    library.checkedOut();
 
                     break;
                 case 7://7.) Exit the Program
