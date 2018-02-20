@@ -10,6 +10,7 @@ public class Game {
     private String name;
     private String dueDate;
 
+    /**Nice job */
     public Game(String name) {
         this.name = name;
         dueDate = "";

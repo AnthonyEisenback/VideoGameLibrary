@@ -5,6 +5,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
+
+    /**It's good practice not to instantiate objects above like this, but in an init method. That way you can control when they're instantiated/used.
+     * This is because sometimes you'll have code try to use an object before it's instantiated above and will result in a crash */
     private Scanner input = new Scanner(System.in);
     public Library library = new Library(this);
     private Menu menu;
@@ -19,6 +22,9 @@ public class Menu {
                 "5.) Check in a game \n" +
                 "6.) view checked out games \n" +
                 "7.) Exit the Program");
+
+        /**I recommend, rather than making your cases ints, making them Strings, case '1', that way you won't need a try/catch and
+         * can tell your application in its default to let the user know that they've entered an invalid entry. */
 
         try {
             switch (input.nextInt()) {
@@ -62,6 +68,7 @@ public class Menu {
                     break;
             }
 
+            /**I'd have this in my default. */
         } catch (InputMismatchException ime) {
             input.nextLine();
             System.out.println("Please select a number");

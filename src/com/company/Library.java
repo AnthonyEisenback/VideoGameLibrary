@@ -39,6 +39,8 @@ public class Library {
     }
 
     protected void removeGame(int gameIndex) {
+        /**Again, I'd remove games based on their titles, rather than numbers so you don't have to perform resource-expensive for-loops for the procedure. */
+
         int index = 1;
         System.out.println("Input the number of the game to be removed!");
 
@@ -63,6 +65,9 @@ public class Library {
 
         System.out.println("What game would you like to check out today?");
 
+        /**Not quite sure what this is doing. better functionality would be to have the user enter the name of the game they wish to remove
+         * and simply telling the array to ignore case, l.remove(input.nextLine()). So you don't have to perform advanced logic to match
+         * the games up with the numbers*/
 
         num -= num;
 
@@ -90,6 +95,7 @@ public class Library {
             System.out.println(index++ + ". " + game.getName());
 
         }
+        /**Again, oif you make your cases Strings instead of ints you can avoid the use of try/catchs and put all of the catch logic in your default section. */
 
         try {
             System.out.println("Please type the name of the game to check it in");
