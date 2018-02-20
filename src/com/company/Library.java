@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Library {
+    private Scanner input = new Scanner(System.in);
     public final Menu menu;
     ArrayList<Game> l = new ArrayList<>();
-    ArrayList<String> games = new ArrayList<>();
-    private Scanner input = new Scanner(System.in);
+    ArrayList<Integer> games = new ArrayList<Integer>();
     private SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
     private Game myGames = new Game("");
+    private String name;
 
 
     public Library(Menu menu) {
@@ -20,81 +21,54 @@ public class Library {
 
 
     protected void addGame() {
-        System.out.println("You have come here to add a game to your library. Please enter the games name now.");
-        String name = input.nextLine();
-        Game video = new Game(name);
-        l.add(video);
-        System.out.println("Your game has been saved!");
 
-
-        menu.Options();
-
-    }
-
-    protected void removeGame() {
-        int index = 1;
-
-        for (Game game : l) {
-            System.out.println(index++ + ". " + game.getName());
-        }
-
-        System.out.println("What game would you like to remove?");
-        String rGame = input.nextLine();
-        l.remove(rGame);
-        System.out.println("Your game has been removed!");
-
-            menu.Options();
-        }
-
-    protected void checkoutGame(int gameIndex) {
-        System.out.println("What game would you like to check out today?");
-
-        int index = 1;
-
-        for (Game game : l) {
-            System.out.println(index++ + ". " + game.getName());
-        }
-
-        System.out.println("please enter the name of the game for checkout!");
-        String nameToCheckOut = input.nextLine();
-        System.out.println(nameToCheckOut);
 
         try {
-            System.out.println("Is this game " + nameToCheckOut + " the game you would like to checkout?");
-            System.out.println("Yes or No? \n1.) Yes \n2.) No ");
-            switch (input.nextInt()) {
-
-                case 1:
-                    System.out.println("Your game has been checked out!");
-                    games.add(nameToCheckOut);
-                    l.remove(nameToCheckOut);
-
-                    break;
-
-                case 2:
-                    System.out.println("Oh...\n" +
-                            "Lets try that again...");
-                    checkedOut();
-                    break;
-
-                default:
-                    System.out.println(" Please select a number! ");
-                    checkoutGame(gameIndex);
-                    break;
+            System.out.println("Please enter the name of the game you are adding!");
+            name = input.nextLine();
+            Game video = new Game(name);
+            l.add(video);
+            System.out.println("Your game has been saved!");
 
 
-            }
+            menu.Options();
 
         } catch (InputMismatchException ime) {
-            System.out.println("Please select yes or no");
+            System.out.println("Please enter a name");
+        }
+    }
+
+    protected void removeGame(int gameIndex) {
+        int index = 1;
+        System.out.println("Input the number of the game to be removed!");
+
+        for (Game game : l) {
+            System.out.println(index++ + ". " + game.getName());
+        }
+//        String scanner = input.nextLine();
+
+        gameIndex--;
+        int qwerty = input.nextInt();
+        l.remove(qwerty - 1);
+        System.out.println("Your game has been removed from your library!");
+        menu.Options();
+    }
+
+
+    protected void checkoutGame(int num) {
+        int index = 1;
+        for (Game game : l) {
+            System.out.println(index++ + ". " + game.getName());
         }
 
+        System.out.println("What game would you like to check out today?");
 
-        gameIndex -= gameIndex;
 
-        Game game = l.get(gameIndex);
+        num -= num;
 
-        l.remove(game);
+        Game game = l.get(input.nextInt()-1);
+
+        games.add(input.nextInt()-1);
 
         Calendar calendar = Calendar.getInstance();
         System.out.println("You checked out this game on " +
@@ -103,7 +77,7 @@ public class Library {
         System.out.println("It is due back on: " + dateFormat.format(calendar.getTime()));
         game.setDueDate(dateFormat.format(calendar.getTime()));
 
-
+        l.remove(num);
         menu.Options();
 
     }
@@ -116,27 +90,34 @@ public class Library {
             System.out.println(index++ + ". " + game.getName());
 
         }
-        System.out.println("Please type the name of the game to check it in");
 
-        switch (input.nextInt()) {
+        try {
+            System.out.println("Please type the name of the game to check it in");
 
-            case 1:
-                System.out.println("Your game has been checked In!");
-                menu.Options();
-                break;
+            switch (input.nextInt()) {
 
-            case 2:
-                System.out.println("Oh...\n" +
-                        "Lets try that again...");
-                checkinGame();
-                break;
+                case 1:
+                    System.out.println("Your game has been checked In!");
+                    menu.Options();
+                    break;
 
-            default:
-                System.out.println(" Please select a number! ");
+                case 2:
+                    System.out.println("Oh...\n" +
+                            "Lets try that again...");
+                    checkinGame();
+                    break;
 
-                break;
+                default:
+                    System.out.println(" Please select a number! ");
+
+                    break;
+
+            }
+        } catch (InputMismatchException ime) {
+            System.out.println("Please input a number!");
 
         }
+        menu.Options();
 
 
     }
@@ -159,7 +140,7 @@ public class Library {
 
         int index = 1;
 
-        for (String game : games) {
+        for (Integer game : games) {
             System.out.println(index++ + ". " + game);
         }
 

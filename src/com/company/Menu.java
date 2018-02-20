@@ -29,7 +29,7 @@ public class Menu {
                     break;
 
                 case 2://2.) Remove a game from your library
-                    library.removeGame();
+                    library.removeGame(0);
 
                     break;
                 case 3://3.) Check out a game from your library
